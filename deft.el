@@ -1564,7 +1564,7 @@ If the point is not on a file button, do nothing."
   "Sort FILES using method specified in `deft-current-sort-method'."
   (funcall (cond ((eq deft-current-sort-method 'title)
                   'deft-sort-files-by-title)
-                 ((eq deft-current-sort-method 'title-stripped)
+                 ((eq deft-current-sort-method 'title-only)
                   'mw-deft-sort-files-by-title-stripped)
                  (t 'deft-sort-files-by-mtime))
           files))
