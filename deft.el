@@ -1562,9 +1562,12 @@ If the point is not on a file button, do nothing."
 
 (defun deft-sort-files (files)
   "Sort FILES using method specified in `deft-current-sort-method'."
-  (funcall (if (eq deft-current-sort-method 'title)
-               'deft-sort-files-by-title
-             'deft-sort-files-by-mtime) files))
+  (funcall (cond ((eq deft-current-sort-method 'title)
+                  'deft-sort-files-by-title)
+                 ((eq deft-current-sort-method 'title-stripped)
+                  'mw-deft-sort-files-by-title-stripped)
+                 (t 'deft-sort-files-by-mtime))
+          files))
 
 (defun deft-filter-initialize ()
   "Initialize the filter string (nil) and files list (all files)."
